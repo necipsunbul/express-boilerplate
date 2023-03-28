@@ -7,7 +7,7 @@ class UploadManager{
     allowedMimeTypes = [];
 
 
-    single(){
+    run(){
         Math.random()
         const storage = multer.diskStorage({
             destination: (req, file, cb) => {

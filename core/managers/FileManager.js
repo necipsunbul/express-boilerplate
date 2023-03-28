@@ -16,12 +16,12 @@ class FileManager{
         return path.join(rootPath,...folderList)
     }
 
-    static imageUpload(fileName = null){
+    static singleImageUpload(inputField,fileName = null){
         const upload = new UploadManager();
         upload.allowedMimeTypes = MimeTypes.imageMimeTypes;
         upload.allowedExtensions = FileExtensions.image;
         if(fileName) upload.fileName = fileName;
-        return upload.single();
+        return upload.run().single(inputField);
     }
 }
 
