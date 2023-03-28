@@ -8,20 +8,23 @@ class BaseService {
         return result.save();
     }
 
-     findById(id){
+    findById(id){
         return this.model.findById(id)
     }
-     find(cond = {},fields = {}){
+
+    find(cond = {},fields = {}){
         return this.model.find(cond,fields);
     }
 
     findOne(cond = {},fields = {}){
         return this.model.findOne(cond,fields)
     }
+
     async updateOne(cond,data){
         const result = await this.model.updateOne(cond,data);
         return result.modifiedCount;
     }
+
     async deleteOne(cond){
         const result = await this.model.deleteOne(cond);
         return result.deletedCount;

@@ -26,7 +26,7 @@ class UserController{
 
     async list(req,res,next){
         try {
-            const list  = await UserService.find().sort({_id:-1});
+            const list  = await UserService.find().sort({_id:-1}).limit(50);
             res.json(new SuccessResponse('ok',list.map(item => new UserDto(item))));
         }catch (e) {
             next(e);

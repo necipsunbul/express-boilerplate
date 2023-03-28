@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const SHA256 = require('crypto-js/sha256');
+const {UserRoles} = require("../../core/staticDatas/systemStatics");
 const {STATIC_KEY,SECRET_KEY} = process.env;
 
 class AuthTools{
@@ -9,12 +11,25 @@ class AuthTools{
     static comparePassword(string,hash){
         return bcrypt.compare(string,hash);
     }
+
+    static generateSessionKey(user){
+        if(!user || !user.password || !user._id) return false;
+        return SHA256(user._id.toString() + STATIC_KEY + user.password.toString()).toString()
+    }
+
+    static compareSessionKey(current,hash){
+        const createdKey = AuthTools.generateSessionKey(current);
+        if(!createdKey) return false;
+        return createdKey === hash;
+    }
+
     static generateToken(user,options = {}){
         try{
-            if(!user || !user.password || !user._id) return false;
+            const createdKey = AuthTools.generateSessionKey(user);
+            if(!createdKey) return false;
             const payload = {
                 userId: user._id.toString(),
-                sessionKey: user._id.toString() + STATIC_KEY + user.password.toString(),
+                sessionKey: createdKey,
             };
             return jwt.sign(payload,SECRET_KEY,options);
         }catch {
@@ -26,7 +41,8 @@ class AuthTools{
     }
 
     static checkPerm(need,current = []){
-        return current.includes(need);
+         if(current.includes(UserRoles.superAdmin)) return true;
+         return current.includes(need);
     }
 
 }

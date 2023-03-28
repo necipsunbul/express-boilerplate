@@ -9,6 +9,7 @@ dotenv.config();
 // routes importing
 const indexRoutes = require('./app/routes/indexRoutes');
 const userRoutes = require('./app/routes/userRoutes');
+const authRoutes = require('./app/routes/AuthRoutes');
 
 const app = express()
 const port = process.env.PORT;
@@ -24,6 +25,7 @@ appConfigs();
 
 app.use('/',indexRoutes);
 app.use('/user',userRoutes);
+app.use('/auth',authRoutes);
 
 
 app.use(error404);
