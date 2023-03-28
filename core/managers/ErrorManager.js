@@ -1,8 +1,9 @@
 class ErrorManager extends Error{
     responseCode;
     errorCode;
-    constructor(message) {
+    constructor(message,errorCode = null) {
         super(message);
+        if(errorCode) this.errorCode = errorCode;
     }
 }
 

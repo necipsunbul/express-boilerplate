@@ -3,19 +3,19 @@ class BaseService {
     constructor(model) {
         this.model = model
     }
-    async saveToDb(data){
+    saveToDb(data){
         const result = new this.model(data);
         return result.save();
     }
 
-    async findById(id){
+     findById(id){
         return this.model.findById(id)
     }
-    async find(cond = {},fields = {}){
+     find(cond = {},fields = {}){
         return this.model.find(cond,fields);
     }
 
-    async findOne(cond = {},fields = {}){
+    findOne(cond = {},fields = {}){
         return this.model.findOne(cond,fields)
     }
     async updateOne(cond,data){
