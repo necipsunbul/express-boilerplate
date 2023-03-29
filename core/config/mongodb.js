@@ -7,4 +7,5 @@ module.exports = () => {
     mongoose.connection.on('connected', () => console.log('Mongodb Connection success'));
     mongoose.connection.on('disconnected',() => console.log('Mongodb Disconnected'));
     mongoose.Promise = global.Promise;
+    return mongoose.connection;
 }
