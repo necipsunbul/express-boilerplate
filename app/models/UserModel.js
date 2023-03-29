@@ -6,7 +6,7 @@ const userSchema = new schema({
     email:{
         type:String,
         required:[true,'Email is required'],
-        unique:[true,'Email Başka Bir Kullanıcı Tarafından Kullanılıyor']
+        unique:true
     },
     password:{
         type:String,
@@ -19,6 +19,14 @@ const userSchema = new schema({
         type:Boolean,
         default:false
     },
+    createdAt: {
+        by:schema.Types.ObjectId,
+        day:Date
+    },
+    updatedAt: {
+        by:schema.Types.ObjectId,
+        day:Date
+    }
 },{versionKey:false});
 
 userSchema.post('save', function(error, doc, next) {
