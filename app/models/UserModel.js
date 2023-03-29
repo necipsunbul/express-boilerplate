@@ -15,7 +15,10 @@ const userSchema = new schema({
     cover:String,
     gender:Number,
     roles:[Number],
-
+    deleted:{
+        type:Boolean,
+        default:false
+    },
 },{versionKey:false});
 
 userSchema.post('save', function(error, doc, next) {
