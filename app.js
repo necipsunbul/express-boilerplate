@@ -4,7 +4,10 @@ const logger = require('morgan');
 const {error404,viewError} = require('./app/middlewares/errorViewMids');
 const appConfigs = require('./core/config');
 
-dotenv.config();
+const envFile = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
+dotenv.config({
+    path: envFile
+});
 
 // routes importing
 const indexRoutes = require('./app/routes/indexRoutes');
