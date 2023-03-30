@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const logger = require('morgan');
 const {error404,viewError} = require('./app/middlewares/errorViewMids');
 const appConfigs = require('./core/config');
+const cors = require('cors');
 
 const envFile = process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env';
 dotenv.config({
@@ -17,6 +18,7 @@ const authRoutes = require('./app/routes/AuthRoutes');
 const app = express()
 const port = process.env.PORT;
 
+app.use(cors());
 app.use(express.json({limit:'50mb'}));
 app.use(express.urlencoded({extended:true}))
 
