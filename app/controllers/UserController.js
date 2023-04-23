@@ -30,7 +30,7 @@ class UserController{
     async list(req,res,next){
         try {
             const list  = await UserService.find().sort({_id:-1});
-            res.json(new SuccessResponse('ok',list.map(item => new UserDto(item))));
+            res.json(new SuccessResponse('ok',list.map(item => new UserDto(item,true))));
         }catch (e) {
             next(e);
         }

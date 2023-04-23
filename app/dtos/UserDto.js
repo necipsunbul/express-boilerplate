@@ -1,13 +1,15 @@
 
 class UserDto{
-    constructor(user) {
+    constructor(user,createdAt = false) {
         this._id = user._id;
         this.name = user.name;
         this.email = user.email;
         this.gender = user.gender;
         this.roles = user.roles;
+        if(createdAt) this.createdAt = user.createdAt;
     }
 }
+
 
 class UserCreateDto{
     constructor(user,auditUser) {
