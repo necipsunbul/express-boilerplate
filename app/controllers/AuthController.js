@@ -5,6 +5,7 @@ const UserService = new userService();
 const AuthTool = require('../utils/AuthTools');
 const ErrorCodes = require('../../core/staticDatas/ErrorCodes');
 const {UserDto} = require("../dtos/UserDto");
+const {UserRoles} = require("../../core/staticDatas/systemStatics");
 
 class AuthController{
     async login(req,res,next){
@@ -15,6 +16,7 @@ class AuthController{
             //error.responseCode = httpStatus.UNAUTHORIZED;
             if(!user) return next(error);
             if(!(await AuthTool.comparePassword(password,user.password))) return next(error);
+            if(!AuthTool.checkPerm(UserRoles.superAdmin,user.roles)) return next(error);
             const data = {
                 user: new UserDto(user),
                 accessToken:  AuthTool.generateToken(user)
