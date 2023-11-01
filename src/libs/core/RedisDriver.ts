@@ -1,4 +1,4 @@
-import { RedisClientOptions, RedisClientType, createClient } from "redis";
+import { RedisClientType, createClient } from "redis";
 
 export default class RedisDriver {
   client: RedisClientType;
