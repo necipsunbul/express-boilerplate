@@ -5,10 +5,12 @@ import LoadLibs from "../utils/LoadLibs";
 import LoadRoutes from "../utils/LoadRoutes";
 import SocketBuilder from "./core/SocketBuilder";
 import * as ErrorViews from "../middlewares/ErrorViewMid";
-
+import RedisManager from "./core/RedisDriver";
+import { redisClient } from "../config/redis.config";
 class Application {
   app: Express;
   server;
+  redis?: RedisManager;
   private readonly port: number;
   constructor() {
     appConfigs();
@@ -16,6 +18,7 @@ class Application {
     this.port = +process.env.PORT!;
     this.server = Http.createServer(this.app);
   }
+
   public loadLibs(): void {
     const loader = new LoadLibs(this.app);
     loader.build();
