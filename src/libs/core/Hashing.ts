@@ -14,11 +14,31 @@ export default class Hashing {
     return crypto.lib.WordArray.random(size).toString();
   }
 
-  static async bcrypt(payload: string) {
-    return await bcrypt.hash(payload, 10);
+  static bcrypt(payload: string) {
+    return bcrypt.hash(payload, 10);
   }
 
-  static async bcryptCompare(payload: string, hash: string) {
-    return await bcrypt.compare(payload, hash);
+  static bcryptCompare(payload: string, hash: string) {
+    return bcrypt.compare(payload, hash);
+  }
+
+  static encryptData(payload: string) {
+    return crypto.AES.encrypt(
+      payload,
+      process.env.AES_SECRET_KEY as string
+    ).toString();
+  }
+
+  static decryptData(ciphertext: string) {
+    try {
+      const bytes = crypto.AES.decrypt(
+        ciphertext,
+        process.env.AES_SECRET_KEY as string
+      );
+      return bytes.toString(crypto.enc.Utf8);
+    } catch (e) {
+      console.log(e);
+      return "";
+    }
   }
 }
