@@ -30,15 +30,10 @@ export default class Hashing {
   }
 
   static decryptData(ciphertext: string) {
-    try {
-      const bytes = crypto.AES.decrypt(
-        ciphertext,
-        process.env.AES_SECRET_KEY as string
-      );
-      return bytes.toString(crypto.enc.Utf8);
-    } catch (e) {
-      console.log(e);
-      return "";
-    }
+    const bytes = crypto.AES.decrypt(
+      ciphertext,
+      process.env.AES_SECRET_KEY as string
+    );
+    return bytes.toString(crypto.enc.Utf8);
   }
 }

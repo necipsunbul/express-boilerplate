@@ -1,6 +1,6 @@
 export default class BaseResponse {
-  message: string;
-  success?: boolean;
+  protected message: string;
+  protected success?: boolean;
   constructor(message: string) {
     this.message = message;
   }
@@ -9,5 +9,9 @@ export default class BaseResponse {
     return {
       ...this,
     };
+  }
+
+  setMessage(message: string) {
+    this.message = message;
   }
 }
