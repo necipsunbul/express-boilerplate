@@ -6,34 +6,30 @@ export default class RedisManager {
   constructor() {
     if (isReady) this.client = redisClient;
   }
-
   protected get(key: string) {
     return this.client?.get(key);
   }
-
+  protected jsonGet(key: string) {
+    return this.client?.json.get(key);
+  }
   protected set(key: string, value: string) {
     return this.client?.set(key, value);
   }
   protected jsonSet(key: string, value: string) {
     return this.client?.json.set(key, "$", value);
   }
-
   protected setEx(key: string, value: string, seconds: number) {
     return this.client?.setEx(key, seconds, value);
   }
-
   protected del(key: string) {
     return this.client?.del(key);
   }
-
   protected hSet(key: string, field: string, value: string) {
     return this.client?.hSet(key, field, value);
   }
-
   protected hDel(key: string, field: string) {
     return this.client?.hDel(key, field);
   }
-
   protected flush() {
     return this.client?.flushAll();
   }
