@@ -3,11 +3,11 @@ import crypto from "crypto-js";
 
 export default class Hashing {
   static SHA256(payload: string) {
-    return crypto.SHA256(payload).toString();
+    return crypto.SHA256(payload).toString(crypto.enc.Hex);
   }
 
   static SHA1(payload: string) {
-    return crypto.SHA1(payload).toString();
+    return crypto.SHA1(payload).toString(crypto.enc.Hex);
   }
 
   static randomString(size: number = 16) {

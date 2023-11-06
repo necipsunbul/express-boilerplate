@@ -6,9 +6,8 @@ import BaseResponse from "../libs/core/response/BaseResponse";
 class HomeController {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
-      const apiData: ApiDataModel = new ApiDataModel("1.0");
+      const apiData: ApiDataModel = new ApiDataModel("1.0", "Api is running");
       const response: BaseResponse = new SuccessResponse<ApiDataModel>(apiData);
-      response.setMessage("Api is running");
       res.status(httpStatus.OK).json(response);
     } catch (e) {
       next(e);

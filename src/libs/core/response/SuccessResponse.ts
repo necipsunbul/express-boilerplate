@@ -1,9 +1,9 @@
 import BaseResponse from "./BaseResponse";
 export default class SuccessResponse<T> extends BaseResponse {
-  data?: T | null;
+  body?: T | null;
   constructor(data?: T) {
     super("ok");
     this.success = true;
-    if (data) this.data = data;
+    if (data) this.body = data;
   }
 }
