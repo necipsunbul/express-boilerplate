@@ -1,5 +1,5 @@
 import { RedisClientType } from "redis";
-import { redisClient, isReady } from "../../../config/redis.config";
+import { redisClient, isReady } from "../../config/redis.config";
 
 export default class RedisManager {
   protected client?: RedisClientType;
@@ -13,6 +13,9 @@ export default class RedisManager {
 
   protected set(key: string, value: string) {
     return this.client?.set(key, value);
+  }
+  protected jsonSet(key: string, value: string) {
+    return this.client?.json.set(key, "$", value);
   }
 
   protected setEx(key: string, value: string, seconds: number) {
