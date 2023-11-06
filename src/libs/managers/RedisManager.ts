@@ -1,5 +1,5 @@
 import { RedisClientType } from "redis";
-import { redisClient, isReady } from "../config/redis.config";
+import { redisClient, isReady } from "../../config/redis.config";
 
 export default class RedisManager {
   protected client?: RedisClientType;

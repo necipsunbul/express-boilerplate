@@ -8,6 +8,15 @@ class FileManager {
     return path.join(FileManager.getRootPath, ...folderList);
   }
 
+  static createFile(fileName: string, content: any) {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(fileName, content, (err) => {
+        if (err) reject(err);
+        resolve(true);
+      });
+    });
+  }
+
   static joinPath(folders: string[]) {
     return path.join(...folders);
   }

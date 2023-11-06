@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import ErrorResponse from "../libs/core/response/ErrorResponse";
-import ErrorManager from "../managers/ErrorManager";
+import ErrorManager from "../libs/managers/ErrorManager";
 
 export function error404(req: Request, res: Response, next: NextFunction) {
   const error = new ErrorManager("404 not found");

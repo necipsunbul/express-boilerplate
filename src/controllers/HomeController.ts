@@ -3,6 +3,7 @@ import httpStatus from "http-status";
 import SuccessResponse from "../libs/core/response/SuccessResponse";
 import ApiDataModel from "../models/responseData/ApiDataModel";
 import BaseResponse from "../libs/core/response/BaseResponse";
+
 class HomeController {
   async index(req: Request, res: Response, next: NextFunction) {
     try {
