@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import FileUploadManager from "../libs/managers/UploadManager";
+import FileUploadManager from "../libs/core/managers/UploadManager";
 import ImageFileContants from "../libs/constants/ImageFileConstants";
-import FileManager from "../libs/managers/FileManager";
+import FileManager from "../libs/core/managers/FileManager";
 import ErrorResponse from "../libs/core/response/ErrorResponse";
 import httpStatus from "http-status";
 export default (req: Request, res: Response, next: NextFunction) =>

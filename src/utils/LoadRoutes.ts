@@ -1,7 +1,7 @@
 import { Express } from "express";
 import indexRoutes from "../routes/index.routes";
 import BaseLoader from "../libs/core/BaseLoader";
-import FileManager from "../libs/managers/FileManager";
+import FileManager from "../libs/core/managers/FileManager";
 class LoadRoutes extends BaseLoader {
   app: Express;
   constructor(app: Express) {
