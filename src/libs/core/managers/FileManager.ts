@@ -17,6 +17,15 @@ class FileManager {
     });
   }
 
+  static readFile(filePath: string) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, { encoding: "utf-8" }, function (err, data) {
+        if (!err) return resolve(data);
+        reject(err);
+      });
+    });
+  }
+
   static joinPath(folders: string[]) {
     return path.join(...folders);
   }
