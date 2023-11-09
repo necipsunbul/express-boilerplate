@@ -5,3 +5,5 @@ app.configureSocket();
 app.loadRoutes();
 app.loadErrorMids();
 app.listen();
+
+export default app.app;
