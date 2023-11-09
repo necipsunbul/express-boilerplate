@@ -7,7 +7,7 @@ import SocketBuilder from "./core/SocketBuilder";
 import * as ErrorViews from "../middlewares/ErrorViewMid";
 class Application {
   app: Express;
-  server;
+  server: Http.Server;
   private readonly port: number;
   constructor() {
     appConfigs();
