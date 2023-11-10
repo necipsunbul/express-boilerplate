@@ -11,13 +11,7 @@ class UserController {
       const user = new UserCreateModel(req.body);
       const result = await userService.createUser(user);
       if (!result)
-        next(
-          new ErrorManager(
-            "Bad Request",
-            httpStatus.BAD_REQUEST,
-            httpStatus.BAD_REQUEST
-          )
-        );
+        next(new ErrorManager("Bad Request", httpStatus.BAD_REQUEST));
       const userData = new UserViewModel(result);
       const response = new SuccessResponse<UserViewModel>(userData);
       res.status(httpStatus.OK).json(response);
