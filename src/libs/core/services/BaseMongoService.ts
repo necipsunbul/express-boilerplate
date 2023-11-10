@@ -22,16 +22,18 @@ export default class BaseMongoService<
     return this.model.findOne(condition);
   }
 
-  deleteOne(condition = {}) {
-    return this.model.deleteOne(condition);
+  async deleteOne(condition = {}) {
+    const result = await this.model.deleteOne(condition);
+    return result.deletedCount;
   }
 
   deleteMany(condition = {}) {
     return this.model.deleteMany(condition);
   }
 
-  updateOne(condition = {}, data: UpdateQuery<U>) {
-    return this.model.updateOne(condition, data);
+  async updateOne(condition = {}, data: UpdateQuery<U>) {
+    const result = await this.model.updateOne(condition, data);
+    return result.modifiedCount;
   }
 
   findOneAndUpdate(condition = {}, data: UpdateQuery<U>) {
