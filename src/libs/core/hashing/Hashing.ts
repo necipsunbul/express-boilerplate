@@ -14,7 +14,7 @@ export default class Hashing {
     return crypto.lib.WordArray.random(size).toString();
   }
 
-  static bcrypt(payload: string) {
+  static bcryptHash(payload: string) {
     return bcrypt.hash(payload, 10);
   }
 

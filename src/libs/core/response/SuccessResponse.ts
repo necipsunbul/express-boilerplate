@@ -4,6 +4,6 @@ export default class SuccessResponse<T> extends BaseResponse {
   constructor(data?: T) {
     super("ok");
     this.success = true;
-    if (data) this.body = data;
+    this.body = data;
   }
 }

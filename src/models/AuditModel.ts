@@ -1,11 +1,11 @@
 export default class AuditModel {
   createdAt: Date;
-  createdBy: String;
+  createdBy?: String;
   updatedAt?: Date;
   updatedBy?: String;
   constructor(
     createdAt: Date,
-    createdBy: String,
+    createdBy?: String,
     updatedAt?: Date,
     updatedBy?: String
   ) {

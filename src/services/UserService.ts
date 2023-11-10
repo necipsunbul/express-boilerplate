@@ -11,4 +11,9 @@ export default class UserService extends BaseMongoService<
   constructor() {
     super(UserSchema);
   }
+
+  async createUser(body: UserCreateModel) {
+    await body.hashPassword();
+    return await this.save(body);
+  }
 }
