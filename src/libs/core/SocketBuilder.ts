@@ -21,6 +21,7 @@ class SocketBuilder {
         next();
       })
       .on("connection", (socket: socketio.Socket) => {
+        console.log("a user connected", socket.id);
         this.loadEvents(socket);
         this.events.forEach((item) => item.on());
 
