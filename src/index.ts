@@ -6,4 +6,4 @@ app.loadRoutes();
 app.loadErrorMids();
 app.listen();
 
-export default app.app;
+export default app.server;

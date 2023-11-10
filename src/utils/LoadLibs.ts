@@ -1,4 +1,4 @@
-import { Express } from "express";
+import express, { Express } from "express";
 import helmet from "helmet";
 import FileUpload from "express-fileupload";
 import morgan from "morgan";
@@ -11,7 +11,6 @@ const FileUploadConfig = {
   tempFileDir: "/tmp/",
   //safeFileNames:true
 };
-
 class LoadLibs extends BaseLoader {
   app: Express;
   constructor(app: Express) {
@@ -21,6 +20,9 @@ class LoadLibs extends BaseLoader {
 
   public build(): void {
     //  this.app.use(helmet());
+    this.app.use(express.json({ limit: "50mb" }));
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use("/static", express.static("public"));
     this.app.use(cors());
     if (process.env.NODE_ENV === "development") this.app.use(morgan("dev"));
     this.app.use(FileUpload(FileUploadConfig));
