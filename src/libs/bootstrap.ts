@@ -1,5 +1,5 @@
 import express, { Express } from "express";
-import appConfigs from "../config/config";
+import appConfigs from "./config/config";
 import Http from "http";
 import LoadLibs from "../utils/LoadLibs";
 import LoadRoutes from "../utils/LoadRoutes";

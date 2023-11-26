@@ -4,8 +4,8 @@ import FileUpload from "express-fileupload";
 import morgan from "morgan";
 import BaseLoader from "../libs/core/BaseLoader";
 import cors from "cors";
-import { corsOptions } from "../config/cors.config";
-import FileUploadConfig from "../config/uploader.config";
+import { corsOptions } from "../libs/config/cors.config";
+import FileUploadConfig from "../libs/config/uploader.config";
 
 class LoadLibs extends BaseLoader {
   app: Express;

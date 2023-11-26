@@ -1,5 +1,5 @@
 import { RedisClientType } from "redis";
-import RedisDriver from "../libs/core/RedisDriver";
+import RedisDriver from "../core/RedisDriver";
 export let redisClient: RedisClientType;
 export let isReady: boolean;
 

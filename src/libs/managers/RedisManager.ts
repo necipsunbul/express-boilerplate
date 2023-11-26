@@ -1,5 +1,5 @@
 import { RedisClientType, SetOptions } from "redis";
-import { redisClient, isReady } from "../../config/redis.config";
+import { redisClient, isReady } from "../config/redis.config";
 import { PositionType, zAddItem } from "../constants/RedisContants";
 
 export default class RedisManager {
