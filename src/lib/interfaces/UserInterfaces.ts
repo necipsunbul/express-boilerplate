@@ -2,6 +2,7 @@ import AuditModel from "../models/AuditModel";
 export interface ICreateUserBody {
   name: string;
   surName?: string;
+  userName: string;
   email: string;
   gender: number;
   roles: Array<number>;
@@ -12,6 +13,8 @@ export interface IUserViewBody {
   _id: string;
   name: string;
   surName?: string;
+  cover?: string;
+  userName: string;
   email: string;
   gender: number;
   roles: Array<number>;

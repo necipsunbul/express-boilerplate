@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
 import SuccessResponse from "../_core/response/SuccessResponse";
-import ApiDataModel from "../models/responseData/ApiDataModel";
+import ApiDataModel from "../models/response/ApiDataModel";
 import BaseResponse from "../_core/response/BaseResponse";
 
 class HomeController {

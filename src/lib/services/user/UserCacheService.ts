@@ -1,4 +1,4 @@
-import RedisManager from "../_core/cache/RedisManager";
+import RedisManager from "../../_core/cache/RedisManager";
 
 export default class UserCacheService extends RedisManager {
   key: string = "user";

@@ -4,7 +4,7 @@ export enum gender {
   OTHER = 3,
 }
 
-export enum userRoles {
+export enum userRole {
   USER = 1,
   ADMIN = 2,
   SUPERADMIN = 3,

@@ -1,12 +1,13 @@
 import BaseModel from "../_core/model/BaseModel";
 import AuditModel from "./AuditModel";
 import { ICreateUserBody, IUserViewBody } from "../interfaces/UserInterfaces";
-import Hashing from "../_core/hashing/Hashing";
 
-export class UserViewModel {
+export class UserDtoModel {
   _id: string;
   name: string;
+  cover?: string;
   surName?: string;
+  userName: string;
   email: string;
   gender: number;
   roles: Array<number>;
@@ -16,10 +17,12 @@ export class UserViewModel {
     this._id = body._id.toString();
     this.name = body.name;
     this.surName = body.surName;
+    this.cover = body.cover;
     this.email = body.email;
     this.gender = body.gender;
     this.birthDay = body.birthDay;
     this.roles = body.roles;
+    this.userName = body.userName;
   }
 }
 
@@ -51,6 +54,7 @@ export class UserModel {
 export class UserCreateModel extends BaseModel {
   name: string;
   surName?: string;
+  userName: string;
   email: string;
   password: string;
   gender: number;
@@ -65,10 +69,8 @@ export class UserCreateModel extends BaseModel {
     this.gender = body.gender;
     this.roles = body.roles;
     this.birthDay = body.birthDay;
+    this.userName = body.userName;
     this.audit = new AuditModel(new Date());
-  }
-  async hashPassword() {
-    this.password = await Hashing.bcryptHash(this.password);
   }
 }
 export class UserUpdateModel extends BaseModel {

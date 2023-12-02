@@ -7,11 +7,15 @@ import httpStatus from "http-status";
 export interface IUser extends Document {
   name: String;
   surName?: String;
+  cover?: String;
+  userName: String;
   email: String;
   password: String;
   birthDay: Date;
   gender: Number;
   roles: Array<number>;
+  isDeleted: Boolean;
+  isBanned: Boolean;
   audit?: AuditModel;
 }
 
@@ -22,6 +26,12 @@ const userSchema: Schema<IUser> = new Schema<IUser>(
       required: true,
     },
     surName: String,
+    cover: String,
+    userName: {
+      type: String,
+      unique: true,
+      required: true,
+    },
     email: {
       type: String,
       unique: true,
@@ -38,6 +48,14 @@ const userSchema: Schema<IUser> = new Schema<IUser>(
     roles: {
       type: [Number],
       required: true,
+    },
+    isBanned: {
+      type: Boolean,
+      default: false,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
     },
     audit: AuditSchema,
   },

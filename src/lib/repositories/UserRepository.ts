@@ -1,6 +1,6 @@
 import BaseRepository from "../_core/repository/BaseRepository";
-import UserService from "../services/UserService";
-import UserCacheService from "../services/UserCacheService";
+import UserService from "../services/user/UserService";
+import UserCacheService from "../services/user/UserCacheService";
 export default class UserRepository extends BaseRepository<UserService> {
   protected service: UserService;
   protected cacheService: UserCacheService;
