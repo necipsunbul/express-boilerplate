@@ -57,6 +57,9 @@ export default class RedisManager {
   protected hSet(key: string, field: string, value: string) {
     return this.client?.hSet(key, field, value);
   }
+  protected hGet(key: string, field: string) {
+    return this.client?.hGet(key, field);
+  }
   protected hDel(key: string, field: string) {
     return this.client?.hDel(key, field);
   }
