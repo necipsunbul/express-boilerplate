@@ -1,7 +1,7 @@
 import { Schema, model, Document } from "mongoose";
 import AuditModel from "../models/AuditModel";
 import AuditSchema from "./AuditSchema";
-import ErrorManager from "../_core/error/ErrorService";
+import ErrorService from "../_core/error/ErrorService";
 import httpStatus from "http-status";
 
 export interface IUser extends Document {
@@ -65,7 +65,7 @@ const userSchema: Schema<IUser> = new Schema<IUser>(
 );
 userSchema.post("save", { errorHandler: true }, (error: any, doc, next) => {
   if (error.name === "MongoServerError" && error.code === 11000) {
-    const error_ = new ErrorManager(
+    const error_ = new ErrorService(
       "Email address is used by another user",
       httpStatus.BAD_REQUEST,
       error.code
