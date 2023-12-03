@@ -1,4 +1,4 @@
-import request from "supertest";
+import { agent as request } from "supertest";
 import app from "../index";
 
 describe("Default endpoint => '/' tests", () => {
