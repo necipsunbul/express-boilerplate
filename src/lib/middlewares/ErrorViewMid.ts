@@ -1,15 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 import ErrorResponse from "../_core/response/ErrorResponse";
-import ErrorManager from "../_core/error/ErrorManager";
+import ErrorService from "../_core/error/ErrorService";
 
 export function error404(req: Request, res: Response, next: NextFunction) {
-  const error = new ErrorManager("404 not found");
+  const error = new ErrorService("404 not found");
   error.httpStatus = 404;
   next(error);
 }
 
 export function viewError(
-  error: ErrorManager,
+  error: ErrorService,
   req: Request,
   res: Response,
   next: NextFunction

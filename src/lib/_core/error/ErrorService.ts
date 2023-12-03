@@ -1,4 +1,4 @@
-export default class ErrorManager extends Error {
+export default class ErrorService extends Error {
   public httpStatus?: number;
   public errorCode?: number;
   constructor(message: string, httpStatus?: number, errorCode?: number) {

@@ -1,7 +1,7 @@
 import { Schema, model, Document } from "mongoose";
 import AuditModel from "../models/AuditModel";
 import AuditSchema from "./AuditSchema";
-import ErrorManager from "../_core/error/ErrorManager";
+import ErrorManager from "../_core/error/ErrorService";
 import httpStatus from "http-status";
 
 export interface IUser extends Document {
