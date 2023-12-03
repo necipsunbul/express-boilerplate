@@ -6,18 +6,19 @@ export default class UserCacheService extends RedisManager {
     super();
   }
 
-  setData(data: string) {
-    return this.set(this.key, data);
+  setData(field: string,data: string) {
+    return this.hSet(this.key, field,data);
   }
 
   setExData(data: string) {
     return this.setEx(this.key, data, 10);
   }
-  getData() {
-    return this.get(this.key);
+
+  getData(field:string) {
+    return this.hGet(this.key,field);
   }
 
-  deleteData() {
-    return this.del(this.key);
+  deleteData(field:string) {
+    return this.hDel(this.key,field);
   }
 }

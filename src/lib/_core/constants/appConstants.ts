@@ -7,5 +7,11 @@ export enum gender {
 export enum userRole {
   USER = 1,
   ADMIN = 2,
-  SUPERADMIN = 3,
+  SUPER_ADMIN = 3,
+}
+
+
+export enum vercelMs{
+    TWO_HOURS = '2h',
+    SIX_MONTH = '180 days'
 }
