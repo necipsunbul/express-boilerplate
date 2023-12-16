@@ -1,9 +1,15 @@
 import { RedisClientType, createClient } from "redis";
 
 export default class RedisDriver {
+  private static instance: RedisDriver;
+  public static get getInstance(): RedisDriver {
+    if (!RedisDriver.instance) RedisDriver.instance = new RedisDriver();
+    return RedisDriver.instance;
+  }
+
   client: RedisClientType;
   isReady: boolean = false;
-  constructor() {
+  private constructor() {
     const { REDIS_PORT, REDIS_USERNAME, REDIS_PASSWORD, REDIS_SERVER } =
       process.env;
     const clientOptions = {

@@ -4,7 +4,7 @@ export let redisClient: RedisClientType;
 export let isReady: boolean;
 
 const redisBuild = async () => {
-  const redis = new RedisDriver();
+  const redis = RedisDriver.getInstance;
   redisClient = await redis.connect();
   isReady = redis.isReady;
 };

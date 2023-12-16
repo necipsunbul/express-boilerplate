@@ -4,7 +4,7 @@ import redisBuild from "./redis.config";
 const appConfigs = async () => {
   dotenvConfig();
   redisBuild();
-  mongoConfig();
+  await mongoConfig();
 };
 
 export default appConfigs;

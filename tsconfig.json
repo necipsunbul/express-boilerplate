@@ -3,7 +3,7 @@
     "./coverage",
     "./dist",
     "./src/__tests__",
-    "jest.config.js",
+    "jest.config.ts",
     "/src/**/*.test.ts"
   ],
   "ts-node": {
