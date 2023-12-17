@@ -3,10 +3,12 @@ import RedisDriver from "../cache/RedisDriver";
 export let redisClient: RedisClientType;
 export let isReady: boolean;
 
-const redisBuild = async () => {
+export const redisConnect = async () => {
   const redis = RedisDriver.getInstance;
   redisClient = await redis.connect();
   isReady = redis.isReady;
 };
 
-export default redisBuild;
+export const redisDisconnect = async () => {
+  await RedisDriver.getInstance.disconnect();
+};

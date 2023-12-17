@@ -1,10 +1,13 @@
 import dotenvConfig from "./dotenv.config";
-import mongoConfig from "./mongo.config";
-import redisBuild from "./redis.config";
-const appConfigs = async () => {
+import { connectMongoDb, closeMongdb } from "./mongo.config";
+import { redisConnect, redisDisconnect } from "./redis.config";
+export const appConfigs = async () => {
   dotenvConfig();
-  redisBuild();
-  await mongoConfig();
+  await redisConnect();
+  await connectMongoDb();
 };
 
-export default appConfigs;
+export const closeDatabases = async () => {
+  await closeMongdb();
+  await redisDisconnect();
+};

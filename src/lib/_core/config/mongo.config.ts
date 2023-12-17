@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const mongoConfig = async () => {
+export const connectMongoDb = async () => {
   const {
     MONGO_PORT,
     MONGO_USERNAME,
@@ -10,12 +10,12 @@ const mongoConfig = async () => {
   const uri: string = `mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}`;
   try {
     await mongoose.connect(uri);
-    console.log("Mongodb Connection success");
+    mongoose.Promise = global.Promise;
   } catch (e) {
     throw e;
   }
-
-  mongoose.Promise = global.Promise;
 };
 
-export default mongoConfig;
+export const closeMongdb = async () => {
+  await mongoose.connection.close();
+};

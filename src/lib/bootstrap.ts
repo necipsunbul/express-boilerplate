@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-import appConfigs from "./_core/config/config";
 import Http from "http";
 import LoadLibs from "./utils/LoadLibs";
 import LoadRoutes from "./utils/LoadRoutes";
@@ -10,7 +9,6 @@ class Application {
   server: Http.Server;
   private readonly port: number;
   constructor() {
-    appConfigs();
     this.app = express();
     this.port = +process.env.PORT!;
     this.server = Http.createServer(this.app);

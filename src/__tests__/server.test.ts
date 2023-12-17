@@ -1,17 +1,28 @@
 import { agent as request } from "supertest";
+import { appConfigs } from "../lib/_core/config/config";
+import { closeDatabases } from "../lib/_core/config/config";
 import app from "../index";
-import configs from "../lib/_core/config/config";
-import mongoose from "mongoose";
-
 describe("Default endpoint => '/' tests", () => {
   beforeAll(async () => {
-    console.log("before all");
-    await configs();
+    await appConfigs();
   });
-  test("Catch home route", async () => {});
+
+  test("Catch home route", async () => {
+    const res = await request(app).get("/");
+    const responseData = {
+      message: "ok",
+      success: true,
+      body: {
+        status: "Api is running",
+        version: "1.0",
+      },
+    };
+    expect(res.body).toStrictEqual(responseData);
+  });
+
   afterAll(() => {
-    console.log("after alll");
-    mongoose.connection.close();
-    // app.close();
+    closeDatabases().then(() => {
+      app.close();
+    });
   });
 });

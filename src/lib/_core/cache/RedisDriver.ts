@@ -6,7 +6,6 @@ export default class RedisDriver {
     if (!RedisDriver.instance) RedisDriver.instance = new RedisDriver();
     return RedisDriver.instance;
   }
-
   client: RedisClientType;
   isReady: boolean = false;
   private constructor() {
@@ -19,17 +18,24 @@ export default class RedisDriver {
   }
   public async connect(): Promise<RedisClientType> {
     try {
-      this.client.on("error", (err) => console.log(`Redis Error: ${err}`));
-      this.client.on("connect", () => console.log("Redis connected"));
-      this.client.on("reconnecting", () => console.log("Redis reconnecting"));
-      this.client.on("ready", () => {
-        this.isReady = true;
-        console.log("Redis ready!");
-      });
+      if (this.isReady) return this.client;
+      // this.client.on("error", (err) => console.log(`Redis Error: ${err}`));
+      //this.client.on("connect", () => console.log("Redis connected"));
+      //this.client.on("reconnecting", () => console.log("Redis reconnecting"));
+      // this.client.on("ready", () => {
+      //   this.isReady = true;
+      // console.log("Redis ready!");
+      // });
+      this.isReady = true;
       return await this.client.connect();
     } catch (e) {
       console.log(e);
-      throw new Error("Redis Connection Error");
+      throw e;
     }
+  }
+
+  public async disconnect() {
+    await this.client.quit();
+    //await this.client.disconnect();
   }
 }
